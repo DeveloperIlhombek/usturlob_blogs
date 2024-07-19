@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { cn, getReadingTime } from '@/lib/utils'
 import { IBlog } from '@/types'
 import { format } from 'date-fns'
 import { CalendarDays, Clock, Dot, Minus } from 'lucide-react'
@@ -39,12 +39,12 @@ function BlogCard(blog: Props) {
 				<div className='flex items-center gap-4'>
 					<div className='flex items-center gap-2'>
 						<CalendarDays className='w-5 h-5' />
-						<p>{format(new Date(blog.createdAt), 'MMM dd, yyyy')}</p>
+						<p>{format(new Date(blog.createdAt), 'MMM dd,yyyy')}</p>
 					</div>
 					<Minus />
 					<div className='flex items-center gap-2'>
 						<Clock className='w-5 h-5' />
-						<p>01 min read</p>
+						<p>{getReadingTime(blog.content.html)} min read</p>
 					</div>
 				</div>
 
@@ -58,7 +58,7 @@ function BlogCard(blog: Props) {
 				<div className='flex items-center gap-4'>
 					<div className='flex items-center gap-2'>
 						<Image
-							src={'/author/chris-impey.jpg'}
+							src={blog.author.image.url}
 							alt={blog.author.name}
 							width={30}
 							height={30}

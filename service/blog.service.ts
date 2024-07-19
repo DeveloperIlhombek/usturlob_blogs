@@ -27,6 +27,9 @@ export const getBlogs = async () => {
 				image {
 					url
 				}
+				content {
+					html
+				}
 			}
 		}
 	`

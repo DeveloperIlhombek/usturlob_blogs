@@ -9,6 +9,7 @@ export interface IBlog {
 	tag: ICatagoryandTags
 	image: { url: string }
 	createdAt: string
+	content: { html: string }
 }
 export interface IAuthor {
 	name: string
