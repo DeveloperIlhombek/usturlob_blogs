@@ -46,7 +46,7 @@ export const getBlogs = async () => {
 
 export const getDetailedBlogs = async (slug: string) => {
 	const query = gql`
-		query MyQuery($slug: String) {
+		query MyQuery($slug: String!) {
 			blog(where: { slug: $slug }) {
 				author {
 					name
