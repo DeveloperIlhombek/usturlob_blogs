@@ -11,6 +11,7 @@ export const getBlogs = async () => {
 				createdAt
 				author {
 					name
+					bio
 					image {
 						url
 					}
@@ -30,6 +31,7 @@ export const getBlogs = async () => {
 				content {
 					html
 				}
+				slug
 			}
 		}
 	`
@@ -40,4 +42,35 @@ export const getBlogs = async () => {
 		console.error('Error fetching blogs:', error)
 		return []
 	}
+}
+
+export const getDetailedBlogs = async (slug: string) => {
+	const query = gql`
+		query MyQuery($slug: String) {
+			blog(where: { slug: $slug }) {
+				author {
+					name
+					image {
+						url
+					}
+					bio
+				}
+				content {
+					html
+				}
+				createdAt
+				image {
+					url
+				}
+				slug
+				title
+				tag {
+					name
+					slug
+				}
+			}
+		}
+	`
+	const { blog } = await request<{ blog: IBlog }>(graphqlAPI, query, { slug })
+	return blog
 }
