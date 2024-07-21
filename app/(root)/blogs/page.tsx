@@ -1,4 +1,4 @@
-import BlogCard from '@/components/blog'
+import BlogCard from '@/components/cards/blog'
 import { getBlogs } from '@/service/blog.service'
 import { Dot, Home } from 'lucide-react'
 import Link from 'next/link'

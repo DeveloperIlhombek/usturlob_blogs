@@ -7,8 +7,8 @@ export const getBlogByTag = async (slug: string) => {
 	const query = gql`
 		query MyQuery {
 			tag(where: { slug: "react-js" }) {
+				name
 				blogs {
-					description
 					author {
 						name
 						image {
@@ -29,8 +29,11 @@ export const getBlogByTag = async (slug: string) => {
 						name
 						slug
 					}
+					catagory {
+						name
+						slug
+					}
 				}
-				name
 			}
 		}
 	`

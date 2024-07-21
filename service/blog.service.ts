@@ -71,6 +71,6 @@ export const getDetailedBlogs = async (slug: string) => {
 			}
 		}
 	`
-	const { blog } = await request<{ blog: IBlog }>(graphqlAPI, query, { slug })
+	const { blog } = await request<{ blog: IBlog[] }>(graphqlAPI, query, { slug })
 	return blog
 }

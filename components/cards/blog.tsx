@@ -1,20 +1,16 @@
-'use client'
-
 import { cn, getReadingTime } from '@/lib/utils'
 import { IBlog } from '@/types'
 import { format } from 'date-fns'
 import { CalendarDays, Clock, Dot, Minus } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { MouseEvent } from 'react'
-import { Badge } from './ui/badge'
+import { Badge } from '../ui/badge'
 
 interface Props extends IBlog {
 	isVertical?: boolean
 }
 
 function BlogCard(blog: Props) {
-	const onTag = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {}
 	return (
 		<div
 			className={cn(
