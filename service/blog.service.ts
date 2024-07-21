@@ -50,6 +50,7 @@ export const getDetailedBlogs = async (slug: string) => {
 						url
 					}
 					bio
+					id
 				}
 				content {
 					html
