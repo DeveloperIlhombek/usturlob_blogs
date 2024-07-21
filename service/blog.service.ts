@@ -35,13 +35,9 @@ export const getBlogs = async () => {
 			}
 		}
 	`
-	try {
-		const { blogs } = await request<{ blogs: IBlog[] }>(graphqlAPI, query)
-		return blogs
-	} catch (error) {
-		console.error('Error fetching blogs:', error)
-		return []
-	}
+
+	const { blogs } = await request<{ blogs: IBlog[] }>(graphqlAPI, query)
+	return blogs
 }
 
 export const getDetailedBlogs = async (slug: string) => {
@@ -65,6 +61,10 @@ export const getDetailedBlogs = async (slug: string) => {
 				slug
 				title
 				tag {
+					name
+					slug
+				}
+				catagory {
 					name
 					slug
 				}

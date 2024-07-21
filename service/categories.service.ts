@@ -3,26 +3,27 @@ import request, { gql } from 'graphql-request'
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT!
 
-export const getTags = async () => {
+export const getCategories = async () => {
 	const query = gql`
 		query MyQuery {
-			tags {
+			catagories {
 				name
 				slug
 			}
 		}
 	`
-	const { tags } = await request<{ tags: ICatagoryandTags[] }>(
+
+	const { catagories } = await request<{ catagories: ICatagoryandTags[] }>(
 		graphqlAPI,
 		query
 	)
-	return tags
+	return catagories
 }
 
-export const getBlogByTag = async (slug: string) => {
+export const getBlogByCategory = async (slug: string) => {
 	const query = gql`
-		query MyQuery {
-			tag(where: { slug: "react-js" }) {
+		query MyQuery($slug: String!) {
+			catagory(where: { slug: $slug }) {
 				name
 				blogs {
 					author {
@@ -54,10 +55,8 @@ export const getBlogByTag = async (slug: string) => {
 		}
 	`
 
-	const { tag } = await request<{ tag: { blogs: IBlog[]; name: string } }>(
-		graphqlAPI,
-		query,
-		{ slug }
-	)
-	return tag
+	const { catagory } = await request<{
+		catagory: { blogs: IBlog[]; name: string }
+	}>(graphqlAPI, query, { slug })
+	return catagory
 }
