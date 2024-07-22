@@ -24,7 +24,7 @@ export interface IAuthor {
 	image: {
 		url: string
 	}
-	blogs: IBlog
+	blogs: IBlog[]
 }
 
 export interface ICatagoryandTags {
