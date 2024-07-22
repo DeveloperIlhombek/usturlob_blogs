@@ -21,7 +21,7 @@ const GlobalSearch = () => {
 	const [blogs, setBlogs] = useState<IBlog[]>([])
 
 	const handleSearch = async (e: ChangeEvent<HTMLInputElement>) => {
-		const text = e.target.value.toLocaleLowerCase()
+		const text = e.target.value.toLowerCase()
 
 		if (text && text.length > 2) {
 			setIsLoading(true)
@@ -79,9 +79,11 @@ const GlobalSearch = () => {
 						</div>
 						<div className='flex flex-wrap gap-2'>
 							{popularCategories.map(item => (
-								<Badge key={item.slug} variant={'secondary'}>
-									{item.name}
-								</Badge>
+								<Link key={item.slug} href={`/categories/${item.slug}`}>
+									<DrawerClose>
+										<Badge variant={'secondary'}>{item.name}</Badge>
+									</DrawerClose>
+								</Link>
 							))}
 						</div>
 					</div>
@@ -97,9 +99,11 @@ const GlobalSearch = () => {
 						</div>
 						<div className='flex flex-wrap gap-2'>
 							{popularTags.map(item => (
-								<Badge key={item.slug} variant={'secondary'}>
-									{item.name}
-								</Badge>
+								<Link href={`/tags/${item.slug}`} key={item.slug}>
+									<DrawerClose>
+										<Badge variant={'secondary'}>{item.name}</Badge>
+									</DrawerClose>
+								</Link>
 							))}
 						</div>
 					</div>

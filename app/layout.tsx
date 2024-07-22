@@ -17,8 +17,25 @@ const workSans = Work_Sans({
 })
 
 export const metadata: Metadata = {
-	title: 'Usturlob first app',
-	description: 'Ushbu blog Ilhom Toshqulov tomonida yaratilmoqda',
+	metadataBase: new URL('http://usturlob.uz'),
+	title: 'Usturlob',
+	description: 'Usturlob web-site about IT blogs, Created by Ilhom Toshqulov',
+	authors: [{ name: 'Ilhom Toshqulov', url: 'http://usturlob.uz' }],
+	icons: { icon: '/favicon.png' },
+	keywords:
+		'IT blogs, dasturlashga oid bloglar, Ilhom Toshqulov, Developer Ilhom,blogs, dasturlash, programming,text,articles',
+	openGraph: {
+		title: 'Usturlob dasturlashga oid maqolalar',
+		description:
+			'Dasturlash haqida yangiliklar, maslahatlar, va dasturlash sohasidagi eng soʻnggi xabarlar. Bizning blogda dasturlashni oʻrganish va rivojlantirish uchun qoʻllanma topishingiz mumkin.',
+		type: 'website',
+		url: 'http://usturlob.uz',
+		locale: 'en_EN',
+		images: 'https://media.graphassets.com/kXL006lyRnW46IKTHdHs',
+		countryName: 'Uzbekistan',
+		siteName: 'usturlob',
+		emails: 'ilxomdeveloper@gmail.com',
+	},
 }
 
 function RootLayout({ children }: ChildProps) {
