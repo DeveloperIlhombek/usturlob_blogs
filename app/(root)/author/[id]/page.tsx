@@ -1,5 +1,6 @@
 import BlogCard from '@/components/cards/blog'
 import { getDetailedAuthor } from '@/service/author.service'
+import { format } from 'date-fns'
 import Image from 'next/image'
 
 async function Page({ params }: { params: { id: string } }) {
@@ -17,7 +18,9 @@ async function Page({ params }: { params: { id: string } }) {
 				/>
 				<div className='flex-1 flex flex-col space-y-4'>
 					<p className='text-muted-foreground text-xl'>
-						<span className='font-bold text-white'>{author.blogs.length}</span>{' '}
+						<span className='font-bold text-white'>
+							{format(new Date(author.blogs.createdAt), 'dd MMM')}
+						</span>{' '}
 						Published posts
 					</p>
 					<h2 className='text-3xl font-creteRound'>{author.name}</h2>
