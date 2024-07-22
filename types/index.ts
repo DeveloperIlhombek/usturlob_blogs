@@ -1,6 +1,11 @@
 export interface ChildProps {
 	children: React.ReactNode
 }
+
+export interface IArchivedBlogs {
+	year: string
+	blogs: IBlog[]
+}
 export interface IBlog {
 	title: string
 	description: string
