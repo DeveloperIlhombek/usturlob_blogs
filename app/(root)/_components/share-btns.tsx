@@ -1,18 +1,23 @@
 'use client'
-
 import { Button } from '@/components/ui/button'
 import { Facebook, Link2, Linkedin, Send, Twitter } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
 function ShareBtns() {
 	const pathname = usePathname()
+	const [isMounted, setIsMounted] = useState(false)
+
+	useEffect(() => {
+		setIsMounted(true)
+	}, [])
 
 	const onCopy = () => {
 		const link = process.env.NEXT_PUBLIC_BASE_URL + pathname
 		navigator.clipboard
 			.writeText(link)
-			.then(() => toast.success('Copied to clipboar'))
+			.then(() => toast.success('Copied to clipboard'))
 	}
 
 	return (

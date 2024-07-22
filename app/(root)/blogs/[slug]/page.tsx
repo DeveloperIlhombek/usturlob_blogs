@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ShareBtns from '../../_components/share-btns'
 
-export async function generateMetaData({
+export async function generateMetadata({
 	params,
 }: {
 	params: { slug: string }
@@ -17,7 +17,7 @@ export async function generateMetaData({
 		title: blog.title,
 		description: blog.description,
 		openGraph: {
-			images: [blog.image.url],
+			images: blog.image.url,
 		},
 	}
 }
@@ -50,15 +50,15 @@ async function SlugPage({ params }: { params: { slug: string } }) {
 				<Minus />
 				<div className='flex items-center gap-2'>
 					<CalendarDays className='w-5 h-5' />
-					<p>{format(new Date(blog.createdAt), 'MMM dd,yyyy')}</p>
+					<p>{format(new Date(blog.createdAt), 'MMM dd, yyyy')}</p>
 				</div>
 			</div>
 
 			<Image
 				src={blog.image.url}
 				alt='alt'
-				width={`1120`}
-				height={`595`}
+				width={1120}
+				height={595}
 				className='mt-4 rounded-md'
 			/>
 
@@ -66,7 +66,7 @@ async function SlugPage({ params }: { params: { slug: string } }) {
 				<div className='flex flex-col space-y-3'>
 					<div className='sticky top-36'>
 						<p className='text-lg uppercase text-muted-foreground'>Share</p>
-						{<ShareBtns />}
+						<ShareBtns />
 					</div>
 				</div>
 				<div className='flex-1 prose dark:prose-invert'>
